@@ -14,7 +14,7 @@ const AuthMiddleware = {
             });
         }
 
-        return next()
+        return next();
     }
 }
 
