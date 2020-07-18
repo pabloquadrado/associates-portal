@@ -1,10 +1,11 @@
 exports.up = function(knex) {
-    return knex.schema.createTable('status_types', function (tableBuilder) {
+    return knex.schema.createTableIfNotExists('status_types', function (tableBuilder) {
         tableBuilder.increments();
-        tableBuilder.string('name').notNullable()
+        tableBuilder.string('name').notNullable();
+        tableBuilder.enum('type', ['ACTIVE', 'INACTIVE']).notNullable().defaultTo('INACTIVE');
     })
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTable('status_types');
+    return knex.schema.dropTableIfExists('status_types');
 };
