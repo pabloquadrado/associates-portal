@@ -4,8 +4,8 @@ exports.up = function(knex) {
         tableBuilder.increments();
         tableBuilder.integer('group_id').unsigned().notNullable();
         tableBuilder.string('name').notNullable();
-        tableBuilder.string('code').notNullable().comment('Matrícula do operador');
-        tableBuilder.string('email').notNullable();
+        tableBuilder.string('code').unique().notNullable().comment('Matrícula do operador');
+        tableBuilder.string('email').unique().notNullable();
         tableBuilder.string('password').notNullable();
         tableBuilder.timestamps();
 
