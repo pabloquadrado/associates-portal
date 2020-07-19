@@ -1,5 +1,4 @@
-
-exports.up = function(knex) {
+exports.up = function (knex) {
     return knex.schema.createTableIfNotExists('associate_groups', function (tableBuilder) {
         tableBuilder.increments();
         tableBuilder.string('name').notNullable();
@@ -8,6 +7,6 @@ exports.up = function(knex) {
     });
 };
 
-exports.down = function(knex) {
+exports.down = function (knex) {
     knex.schema.dropTableIfExists('associate_groups');
 };

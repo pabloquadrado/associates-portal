@@ -1,4 +1,4 @@
-exports.up = function(knex) {
+exports.up = function (knex) {
     return knex.schema.createTableIfNotExists('status', function (tableBuilder) {
         tableBuilder.increments();
         tableBuilder.integer('status_type_id').unsigned().notNullable();
@@ -8,6 +8,6 @@ exports.up = function(knex) {
     })
 };
 
-exports.down = function(knex) {
+exports.down = function (knex) {
     knex.schema.dropTableIfExists('status');
 };

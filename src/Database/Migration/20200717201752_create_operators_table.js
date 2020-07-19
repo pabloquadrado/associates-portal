@@ -1,5 +1,4 @@
-
-exports.up = function(knex) {
+exports.up = function (knex) {
     return knex.schema.createTableIfNotExists('operators', function (tableBuilder) {
         tableBuilder.increments();
         tableBuilder.integer('group_id').unsigned().notNullable();
@@ -13,6 +12,6 @@ exports.up = function(knex) {
     });
 };
 
-exports.down = function(knex) {
+exports.down = function (knex) {
     knex.schema.dropTableIfExists('operators');
 };
