@@ -11,7 +11,12 @@ exports.up = function (knex) {
         tableBuilder.string('rg').unique().notNullable();
         tableBuilder.string('marital_status').nullable();
         tableBuilder.string('affiliation').nullable();
-        tableBuilder.timestamps();
+        tableBuilder.dateTime('created_at')
+            .notNullable()
+            .defaultTo(knex.raw('CURRENT_TIMESTAMP'));
+        tableBuilder.dateTime('updated_at')
+            .notNullable()
+            .defaultTo(knex.raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
         tableBuilder.foreign('status_id').references('id').inTable('status');
         tableBuilder.foreign('group_id').references('id').inTable('associate_groups');

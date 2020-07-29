@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 exports.seed = function (knex) {
     // Deletes ALL existing entries
     return knex('associates').del()
@@ -11,7 +13,7 @@ exports.seed = function (knex) {
                     name: 'Associado Em dia/Ativo',
                     registration_code: '1234',
                     email: 'ativo@teste.com.br',
-                    password: '1234',
+                    password: bcrypt.hashSync('1234', 10),
                     cpf: '12345678910',
                     rg: '1234567895',
                     marital_status: 'Solteiro',
@@ -24,7 +26,7 @@ exports.seed = function (knex) {
                     name: 'Associado Inadimplente',
                     registration_code: '4321',
                     email: 'inativo@teste.com.br',
-                    password: '1234',
+                    password: bcrypt.hashSync('1234', 10),
                     cpf: '12345678901',
                     rg: '1234567896',
                     marital_status: 'Solteiro',
